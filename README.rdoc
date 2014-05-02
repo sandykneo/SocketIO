@@ -1,0 +1,12 @@
+Socket.IO and Expressjs version 4
+
+Testing socket connection by having a chat application
+
+After the download
+
+Point to downloaded folder in cmd prompt>node app.js
+
+Load the test.html file from App folder..
+
+If interested in testing real time testing...
+Open it in two broswers...Start chating.... 
