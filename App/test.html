@@ -1,0 +1,37 @@
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootswatch/3.1.1/united/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        
+  <div class="page-header">
+ <h1>Express 3.0 + Socket.IO <small> Poc for real time communication for rest services</small></h1> 
+</div>
+
+
+        <div class="row">
+  <div class="col-sm-5 col-md-2">Name:<input id="txt" class="form-control" type="text"/></div>
+  <div class="col-sm-5 col-sm-offset-2 col-md-6 col-md-offset-0">Message:<textarea class="form-control" id="txtmg" rows="3"></textarea> <input id="button" class="btn btn-primary" type="button" value="Ping server"/></div>
+</div>
+
+<div id="msgbox"></div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+<script>
+var username=$('#txt').val();
+  var socket = io.connect('http://localhost:8080');
+  socket.on("pong",function(data){
+   $("#msgbox").append('<strong>'+ data.user + ' </strong>' + ':'+ data.txt+"<br>");
+  });
+  
+  $("#button").click(function(){
+     //$("#msgbox").append("Ping server<br>");
+	 $("#msgbox").append( '<strong>' + $('#txt').val() + ' </strong>' + ':'+ $('#txtmg').val() +"<br>");
+     socket.emit("ping",{ txt: $('#txtmg').val(), user: $('#txt').val() });
+  });
+</script>
+</body>
+</html>
