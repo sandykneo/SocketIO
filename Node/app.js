@@ -2,9 +2,6 @@ var express = require('express');
 var app = express();
 var socket = require('socket.io');
 
-
-app.use(express.static(__dirname + '/public'));
-
 var server = app.listen(8080);
 var io = socket.listen(server);
 
